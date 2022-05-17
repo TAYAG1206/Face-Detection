@@ -1,42 +1,42 @@
 #ImageFaceDetection
 
-import cv2
-import sys
+    import cv2
+    import sys
 
-imagePath = "LaCathedralPic.jpg"
-cascPath = "haarcascade_frontalface_default.xml"
+    imagePath = "LaCathedralPic.jpg"
+    cascPath = "haarcascade_frontalface_default.xml"
 
-faceCascade = cv2.CascadeClassifier(cascPath)
+    faceCascade = cv2.CascadeClassifier(cascPath)
 
-image = cv2.imread(imagePath)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.imread(imagePath)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-faces = faceCascade.detectMultiScale(
+    faces = faceCascade.detectMultiScale(
     gray,
     scaleFactor=1.6,
     minNeighbors=5,
     minSize=(30, 30),
     flags = cv2.CASCADE_SCALE_IMAGE
-)
+    )
 
-print("Found {0} pogi faces!".format(len(faces)))
+    print("Found {0} pogi faces!".format(len(faces)))
 
-for (x, y, w, h) in faces:
+    for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 255, 255), 2)
 
-cv2.imshow("Faces found", image)
-cv2.waitKey(0)
+    cv2.imshow("Faces found", image)
+    cv2.waitKey(0)
 
 
 #VideoFaceDetection
 
-import cv2  
+    import cv2  
   
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
   
-cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)
 
-while True:   
+    while True:   
     _, img = cap.read()  
    
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  
@@ -52,4 +52,4 @@ while True:
     if k==27:  
         break  
           
-cap.release()  
+    cap.release()  
